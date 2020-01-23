@@ -1,9 +1,11 @@
-import React from 'react';
+import React from "react";
+import { connect } from "react-redux";
+import { addCarFeature } from "../actions/carActions";
 
 const Header = props => {
   return (
     <>
-      <figure className="image is-128x128">
+      <figure className='image is-128x128'>
         <img src={props.car.image} alt={props.car.name} />
       </figure>
       <h2>{props.car.name}</h2>
@@ -11,5 +13,10 @@ const Header = props => {
     </>
   );
 };
-
-export default Header;
+const mapStateToProps = state => {
+  return {
+    additionalFeatures: state.featuresReducer.additionalFeatures,
+    car: state.carReducer
+  };
+};
+export default connect(mapStateToProps, { addCarFeature })(Header);
