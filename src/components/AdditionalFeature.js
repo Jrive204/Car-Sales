@@ -1,16 +1,17 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addCarFeature } from "../actions/carActions";
 
 const AdditionalFeature = props => {
+  const dispatch = useDispatch();
+
   const buyItem = item => {
     let newitem = {
       id: Math.floor(Math.random() * Date.now()),
       name: props.feature.name,
       price: props.feature.price
     };
-
-    props.addCarFeature(newitem);
+    dispatch({ type: "ADD_FEATURE_CAR", payload: newitem });
   };
   console.log(props.feature.name, "props.feature");
   return (
@@ -24,11 +25,4 @@ const AdditionalFeature = props => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    additionalFeatures: state.featuresReducer.additionalFeatures,
-    car: state.carReducer.car
-  };
-};
-
-export default connect(mapStateToProps, { addCarFeature })(AdditionalFeature);
+export default AdditionalFeature;

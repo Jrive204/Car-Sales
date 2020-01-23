@@ -1,15 +1,16 @@
 import React from "react";
-import { connect } from "react-redux";
-import { addCarFeature, removeCarFeature } from "../actions/carActions";
-import { featuresReducer } from "../reducers/featuresReducer";
+import { useDispatch } from "react-redux";
 
 const AddedFeature = props => {
+  const dispatch = useDispatch();
   return (
     <li>
       {/* Add an onClick to run a function to remove a feature */}
       <button
         className='button'
-        onClick={() => props.removeCarFeature(props.feature)}>
+        onClick={() =>
+          dispatch({ type: "REMOVE_FEATURE", payload: props.feature })
+        }>
         X
       </button>
       {props.feature.name} - &nbsp;
@@ -18,14 +19,4 @@ const AddedFeature = props => {
   );
 };
 
-const mapStateToProps = state => {
-  console.log(state.carReducer.features, "test");
-  return {
-    additionalFeatures: state.featuresReducer.additionalFeatures,
-    car: state.carReducer.car
-  };
-};
-
-export default connect(mapStateToProps, { addCarFeature, removeCarFeature })(
-  AddedFeature
-);
+export default AddedFeature;

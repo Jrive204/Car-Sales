@@ -2,19 +2,19 @@ import React from "react";
 import { connect } from "react-redux";
 import { addCarFeature } from "../actions/carActions";
 
-const Total = props => {
+import { useSelector, useAction } from "react-redux";
+
+const Total = () => {
+  const car = useSelector(state => state.carReducer.car);
+  const additionalPrice = useSelector(
+    state => state.carReducer.additionalPrice
+  );
+
   return (
     <div className='content'>
-      <h4>Total Amount: ${props.car.price + props.additionalPrice}</h4>
+      <h4>Total Amount: ${car.price + additionalPrice}</h4>
     </div>
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    additionalFeatures: state.featuresReducer.additionalFeatures,
-    car: state.carReducer.car,
-    additionalPrice: state.carReducer.additionalPrice
-  };
-};
-export default connect(mapStateToProps, { addCarFeature })(Total);
+export default Total;
