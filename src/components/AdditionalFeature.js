@@ -4,12 +4,17 @@ import { addCarFeature } from "../actions/carActions";
 
 const AdditionalFeature = props => {
   const buyItem = item => {
-    props.addCarFeature(props.feature);
+    let newitem = {
+      id: Math.floor(Math.random() * Date.now()),
+      name: props.feature.name,
+      price: props.feature.price
+    };
+
+    props.addCarFeature(newitem);
   };
-  console.log(props.feature, "props.feature");
+  console.log(props.feature.name, "props.feature");
   return (
     <li>
-      {console.log(props.feature.name, "what is this")}
       {/* Add an onClick that will let you add a feature to your car */}
       <button className='button' onClick={() => buyItem()}>
         Add
