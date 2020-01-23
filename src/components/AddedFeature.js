@@ -9,7 +9,7 @@ const AddedFeature = props => {
       {/* Add an onClick to run a function to remove a feature */}
       <button
         className='button'
-        onClick={() => props.removeCarFeature(props.feature.id)}>
+        onClick={() => props.removeCarFeature(props.feature)}>
         X
       </button>
       {props.feature.name} - &nbsp;
@@ -22,7 +22,7 @@ const mapStateToProps = state => {
   console.log(state.carReducer.features, "test");
   return {
     additionalFeatures: state.featuresReducer.additionalFeatures,
-    car: state.carReducer
+    car: state.carReducer.car
   };
 };
 
