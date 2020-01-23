@@ -5,11 +5,23 @@ import { addCarFeature } from "../actions/carActions";
 const Header = props => {
   return (
     <>
-      <figure className='image is-128x128'>
-        <img src={props.car.image} alt={props.car.name} />
+      <figure className='image'>
+        <img
+          style={{ width: "380px" }}
+          src={props.car.image}
+          alt={props.car.name}
+        />
       </figure>
-      <h2>{props.car.name}</h2>
-      <p>Amount: ${props.car.price}</p>
+      <h2
+        style={{
+          color: "red",
+          fontFamily: "cursive",
+          fontWeight: "900",
+          textAlign: "center"
+        }}>
+        {props.car.name}
+      </h2>
+      <p style={{ textAlign: "center" }}>Amount: ${props.car.price}</p>
     </>
   );
 };
