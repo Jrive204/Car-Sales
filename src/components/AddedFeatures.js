@@ -9,6 +9,7 @@ const AddedFeatures = () => {
   return (
     <div className='content'>
       <h6>Added features:</h6>
+      {console.log(car, "car")}
       {car.features.length ? (
         <ol type='1'>
           {car.features.map(item => (
